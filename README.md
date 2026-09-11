@@ -1,53 +1,126 @@
 # Milo
 
-A fast, friendly AI chat assistant built with React, Vite, and Tailwind CSS, powered by the Cohere API.
+**Milo** is a fast, friendly AI chat assistant built with **React, Vite, and Tailwind CSS**, powered by the **Cohere API**.
 
-## Features
+🔗 **Live Demo:** https://milo-ro2pplc2d-pankaj-20b2.vercel.app/
 
-- 💬 Real-time chat interface with a clean welcome screen and suggested prompts
-- 📱 Responsive layout that works on desktop and mobile
-- 🎨 Custom visual identity (pine green + gold palette, Fraunces/Inter type pairing)
-- 🛠️ Small, single-file component — easy to read and extend
+---
 
-## Getting Started
+## ✨ Features
+
+- 💬 Real-time AI chat interface
+- 🚀 Powered by the Cohere API
+- 💡 Suggested prompts for quick conversations
+- 📱 Responsive design for desktop and mobile
+- 🎨 Custom pine green + gold visual identity
+- ✨ Fraunces + Inter typography
+- ⚡ Built with React and Vite
+- 🧩 Simple and easy-to-extend codebase
+
+---
+
+## 🌐 Live Demo
+
+Try Milo online:
+
+**https://milo-ro2pplc2d-pankaj-20b2.vercel.app/**
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React.js
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS
+- **AI API:** Cohere API
+- **Icons:** Font Awesome
+- **Deployment:** Vercel
+- **Language:** JavaScript
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) 18 or later
-- A free Cohere API key from [dashboard.cohere.com/api-keys](https://dashboard.cohere.com/api-keys)
+Make sure you have:
 
-### Installation
+- Node.js 18 or later
+- npm
+- A Cohere API key
+
+---
+
+## 📦 Installation
+
+Clone the repository and install the dependencies:
 
 ```bash
 npm install
 ```
 
-### Configuration
+---
 
-Open the `.env` file in the project root and replace the placeholder with your own key:
+## 🔑 Environment Configuration
 
-```
+Create a `.env` file in the project root:
+
+```env
 VITE_Api_Key=your_actual_cohere_api_key_here
 ```
 
-### Running the App
+Replace `your_actual_cohere_api_key_here` with your Cohere API key.
+
+> **Important:** Never commit your real API key to GitHub. Add `.env` to `.gitignore`.
+
+Example `.gitignore`:
+
+```gitignore
+node_modules
+dist
+.env
+.env.local
+```
+
+For the deployed Vercel application, configure the same environment variable in **Vercel Project Settings → Environment Variables** and enable it for the required deployment environments.
+
+---
+
+## ▶️ Run Locally
+
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-The app will be available at [http://localhost:5173](http://localhost:5173).
+Milo will be available at:
 
-### Building for Production
+```text
+http://localhost:5173
+```
+
+---
+
+## 🏗️ Build for Production
+
+Create a production build:
 
 ```bash
 npm run build
+```
+
+Preview the production build locally:
+
+```bash
 npm run preview
 ```
 
-## Project Structure
+---
 
-```
+## 📁 Project Structure
+
+```text
 milo-chat/
 ├── public/
 │   └── favicon.svg
@@ -56,16 +129,82 @@ milo-chat/
 │   ├── App.jsx
 │   └── main.jsx
 ├── .env
+├── .gitignore
 ├── index.html
 ├── package.json
 └── README.md
 ```
 
-## Customizing
+---
 
-- **Persona / name**: edit the `preamble` string in `src/App.jsx` (inside the `cohere.chat` call).
-- **Colors**: the palette lives inline as Tailwind arbitrary values (`#20463A` pine, `#E8A73D` gold) in `src/App.jsx` — swap these hex values to restyle.
-- **Fonts**: loaded via Google Fonts in `index.html` (Fraunces + Inter) and mapped in `src/App.css`.
-- **Suggested prompts**: edit the `SUGGESTIONS` array at the top of `src/App.jsx`.
+## 🎨 Customization
 
-**Happy chatting! 🚀**
+### AI Persona
+
+The Milo assistant's personality and system instructions can be customized in:
+
+```text
+src/App.jsx
+```
+
+### Colors
+
+The main visual palette uses:
+
+```text
+Pine Green: #20463A
+Gold:       #E8A73D
+```
+
+These colors can be changed directly in the component styling.
+
+### Fonts
+
+Milo uses:
+
+- **Fraunces** for headings
+- **Inter** for interface text
+
+Fonts are loaded through `index.html` and configured in `App.css`.
+
+### Suggested Prompts
+
+The suggested questions can be changed by editing the `SUGGESTIONS` array in:
+
+```text
+src/App.jsx
+```
+
+---
+
+## 🔐 Security Note
+
+The Cohere API key is required for AI responses.
+
+For production applications, it is recommended to keep API keys on a **server-side backend or serverless function** rather than exposing them directly in a browser-based Vite application.
+
+---
+
+## 🚀 Deployment
+
+Milo is deployed using **Vercel**.
+
+### Live Application
+
+🔗 https://milo-ro2pplc2d-pankaj-20b2.vercel.app/
+
+---
+
+## 👨‍💻 Author
+
+**Er. Pankaj Kumar**
+
+Built with React, Vite, Tailwind CSS, and Cohere API.
+
+---
+
+## ⭐ Project
+
+If you find Milo useful, consider giving the repository a ⭐ on GitHub.
+
+**Milo — Your quick-thinking AI assistant.**
