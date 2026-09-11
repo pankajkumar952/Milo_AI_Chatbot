@@ -2,7 +2,7 @@ import "./App.css";
 import { useRef, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-import { CohereClient } from "cohere-ai";
+
 
 const SUGGESTIONS = [
   "Explain quantum computing simply",
@@ -11,10 +11,7 @@ const SUGGESTIONS = [
   "Tell me a fun science fact",
 ];
 
-// Initialize Cohere client with the API key
-const cohere = new CohereClient({
-  token: import.meta.env.VITE_Api_Key,
-});
+
 
 // Small monogram mark used in the header, welcome screen, and bot avatar
 function MiloMark({ className = "" }) {
@@ -63,15 +60,33 @@ function App() {
         setMessages((prev) => [...prev, { text: "Typing...", sender: "bot" }]);
 
         // API Call to Cohere
-        const response = await cohere.chat({
-          model: "command-a-03-2025",
-          message: messageText,
-          preamble:
-            "Your name is Milo, a warm and helpful assistant. Answer the user's question clearly and concisely.",
-          maxTokens: 100,
-        });
+        // API Call to Cohere (direct REST call, no SDK)
+const response = await fetch("https://api.cohere.com/v2/chat", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${import.meta.env.VITE_Api_Key}`,
+  },
+  body: JSON.stringify({
+    model: "command-a-03-2025",
+    messages: [
+      {
+        role: "system",
+        content:
+          "Your name is Milo, a warm and helpful assistant. Answer the user's question clearly and concisely.",
+      },
+      { role: "user", content: messageText },
+    ],
+    max_tokens: 100,
+  }),
+});
 
-        const data = response.text;
+if (!response.ok) {
+  throw new Error(`Cohere API error: ${response.status}`);
+}
+
+const result = await response.json();
+const data = result.message.content[0].text;
 
         //Filter Loading Message and Add Bot Response
         setMessages((prev) => [
